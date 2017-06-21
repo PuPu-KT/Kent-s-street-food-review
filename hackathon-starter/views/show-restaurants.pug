@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1=title
+  .page-header
+    h3 Your restaurants
+
+    for restaurant in restaurants
+      h3=restaurant.name
+      li=restaurant.address
