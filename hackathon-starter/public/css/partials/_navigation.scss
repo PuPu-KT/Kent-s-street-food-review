@@ -1,0 +1,26 @@
+.navbar {
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+.navbar-default {
+  background: $primary-colour;
+  .navbar-brand {
+    color: white;
+  }
+  .navbar-nav>li>a, .navbar-default .navbar-text {
+    color: white;
+  }
+}
+
+.logo {
+  padding: 0;
+}
+
+.brandName {
+  font-size: 30px;
+}
+
+#logo {
+  height: 50px;
+}

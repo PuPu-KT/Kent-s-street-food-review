@@ -18,11 +18,8 @@ exports.getAll = function(req, res) {
 }
 
 exports.getOne = function(req, res) {
-  let id = req.params.id
-
-  Restaurant.findbyId({
-    _id: id
-  }, function(err, restaurant) {
+  Restaurant.findById(req.params.id
+  , function(err, restaurant) {
     if (err) res.json({
       message: 'could not find restaurant because: ' + err
     })

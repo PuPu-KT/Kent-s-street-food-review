@@ -1,42 +1,104 @@
-.navbar.navbar-default.navbar-fixed-top
-  .container
-    .navbar-header
-      button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a.navbar-brand(href='/')
-        i.fa.fa-cube
-        | Project 2017 Food Search
-    .collapse.navbar-collapse
-      ul.nav.navbar-nav
-        li(class=(title == 'Home') ? 'active' : undefined)
-          a(href='/') 
-        li(class=(title == 'API Examples') ? 'active' : undefined)
-          a(href='/api')
-        li(class=(title == 'Contact') ? 'active' : undefined)
-          a(href='/contact') 
-        li
-          a(href='/status')
-      ul.nav.navbar-nav.navbar-right
-        if !user
-          li(class=(title == 'Login') ? 'active' : undefined)
-            a(href='/login') 
-          li(class=(title == 'Create Account') ? 'active' : undefined)
-            a(href='/signup') 
-        else
-          li.dropdown(class=(title == 'Account Management') ? 'active' : undefined)
-            a.dropdown-toggle(href='#', data-toggle='dropdown')
-              if user.profile.picture
-                img(src=user.profile.picture)
-              else
-                img(src=user.gravatar(60))
-              span= user.profile.name || user.email || user.id
-              i.caret
-            ul.dropdown-menu
-              li
-                a(href='/account') My Account
-              li.divider
-              li
-                a(href='/logout') Logout
+doctype html
+head
+  meta(charset='utf-8')
+  link(href='https://fonts.googleapis.com/css?family=Fontdiner+Swanky', rel='stylesheet')
+  link(rel='stylesheet', href='./css/style.css')
+  script(type='text/javascript', src='./js/app.js')
+  title 2017 SG StreetFood
+nav.navbar.navbar-default
+  // Brand and toggle get grouped for better mobile display
+  .navbar-header
+    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+      span.sr-only Toggle navigation
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    a.navbar-brand.logo.home(href='#')
+      img#logo(alt='Brand', src='images.jpeg')
+    a.navbar-brand.brandName.home(href='#') 2017 SG StreetFood 
+  // Collect the nav links, forms, and other content for toggling
+  #bs-example-navbar-collapse-1.collapse.navbar-collapse
+    ul.nav.navbar-nav.navbar-right
+      // Logged in navigation
+      li
+        a.modalStyle(href='#', data-toggle='modal', data-target='#aboutModal') About
+      li
+        a.loggedIn.favouriteBars.modalStyle(href='#') Favourties
+      li
+        a.loggedIn.bars.modalStyle(href='/bars')
+      li.dropdown.loggedIn
+        a.dropdown-toggle.modalStyle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+          | Profile 
+          span.caret
+        ul.dropdown-menu
+          li#editProfile.loggedIn.modalStyle
+            a(href='#', data-toggle='modal', data-target='#editModal') Edit
+          li.divider(role='separator')
+          li.loggedIn.modalStyle
+            a.logout(href='#') Logout
+      // Logged out navigation
+      li.loggedOut
+        a(href='#', data-toggle='modal', data-target='#loginModal') Login
+      li.loggedOut
+        a(href='#', data-toggle='modal', data-target='#registerModal') Register
+  // /.navbar-collapse
+  
+  // Login Modal
+  #loginModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+    .modal-dialog(role='document')
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+          h2#myModalLabel.modal-title.modalStyle Login
+        form(method='post', action='/login')
+          .modal-body
+            .form-group
+              input.form-control(type='email', name='email', placeholder='Email')
+            .form-group
+              input.form-control(type='password', name='password', placeholder='Password')
+          .modal-footer
+            input#userLogin.btn.btn-primary(type='submit', value='Login')
+
+//- .navbar.navbar-default.navbar-fixed-top
+//-   .container
+//-     .navbar-header
+//-       button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+//-         span.sr-only Toggle navigation
+//-         span.icon-bar
+//-         span.icon-bar
+//-         span.icon-bar
+//-       a.navbar-brand(href='/')
+//-         i.fa.fa-cube
+//-         | Project 2017 Food Search
+//-     .collapse.navbar-collapse
+      //- ul.nav.navbar-nav
+      //-   li(class=(title == 'Home') ? 'active' : undefined)
+      //-     a(href='/') 
+      //-   li(class=(title == 'API Examples') ? 'active' : undefined)
+      //-     a(href='/api')
+      //-   li(class=(title == 'Contact') ? 'active' : undefined)
+      //-     a(href='/contact') 
+      //-   li
+      //-     a(href='/status')
+      //- ul.nav.navbar-nav.navbar-right
+      //-   if !user
+      //-     li(class=(title == 'Login') ? 'active' : undefined)
+      //-       a(href='/login') 
+      //-     li(class=(title == 'Create Account') ? 'active' : undefined)
+      //-       a(href='/signup') 
+      //-   else
+      //-     li.dropdown(class=(title == 'Account Management') ? 'active' : undefined)
+      //-       a.dropdown-toggle(href='#', data-toggle='dropdown')
+      //-         if user.profile.picture
+      //-           img(src=user.profile.picture)
+      //-         else
+      //-           img(src=user.gravatar(60))
+      //-         span= user.profile.name || user.email || user.id
+      //-         i.caret
+      //-       ul.dropdown-menu
+      //-         li
+      //-           a(href='/account') My Account
+      //-         li.divider
+      //-         li
+      //-           a(href='/logout') Logout
