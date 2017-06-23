@@ -1,13 +1,34 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const restaurantSchema = new mongoose.Schema({
-  name: String,
-  address: String,
-  lat: Number,
-  lng: Number,
-  contact: String
-})
+// create geolocation Schema
+const GeoSchema = new Schema({
+    type: {
+        type: String,
+        default: 'Point'
+    },
+    coordinates: {
+        type: [Number],
+        index: '2dsphere'
+    }
+});
 
-const Restaurant = mongoose.model('Restaurant', restaurantSchema);
+// create restaurant Schema & model
+const RestaurantSchema = new Schema({
+    name: {
+        type: String,
+        required: [true, 'Name field is required']
+    },
+    rank: {
+        type: String
+    },
+    available: {
+        type: Boolean,
+        default: false
+    },
+    geometry: GeoSchema
+});
 
-module.exports = Restaurant;
+const Restaurants = mongoose.model('restaurant', RestaurantSchema);
+
+module.exports = Restaurants;
