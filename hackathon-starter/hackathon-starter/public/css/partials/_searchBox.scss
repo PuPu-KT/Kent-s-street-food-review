@@ -1,0 +1,29 @@
+#searchBox, .btn {
+  border: 1px solid $primary-colour;
+  margin: 10px;
+  width: 100%;
+}
+
+.mapSearchContainer {
+  position: relative;
+}
+
+.searchContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.RestNamesContainer {
+  height: calc(100vh - 50vh);
+  overflow: auto;
+  margin: 10px;
+  border: 1px solid $primary-colour;
+  width: 100%;
+}
+
+.favouriteBarsTitle {
+  color: darken($primary-colour, 10%);
+  border-bottom: 1px solid $primary-colour;
+  margin: 0 15px;
+}
