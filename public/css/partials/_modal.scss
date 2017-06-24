@@ -1,0 +1,21 @@
+.modalStyle {
+  color: darken($primary-colour, 10%);
+  padding: 5px;
+}
+
+.creator {
+  color: darken($primary-colour, 10%);
+}
+
+.aboutLines {
+  line-height: 40px;
+  padding: 5px;
+  text-align: center;
+}
+
+.creatorEmail {
+  display: block;
+  text-align: center;
+  border-bottom: 1px solid darken($primary-colour, 10%);
+  padding: 0 0 10px 0;
+}

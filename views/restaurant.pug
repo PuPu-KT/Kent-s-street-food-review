@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1=title
+  .page-header
+    h3 Create A New Restaurant
+
+  form.form-horizontal(method='POST' action="/restaurant/create")
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label(class='col-sm-2 control-label', for='name') Name
+      .col-sm-8
+        input.form-control(type='text', name='name', id='name', autofocus=true)
+    .form-group
+      label(class='col-sm-2 control-label', for='address') Address
+      .col-sm-8
+        input.form-control(type='text', name='address', id='address')
+    .form-group
+      label(class='col-sm-2 control-label', for='message') Contact
+      .col-sm-8
+        textarea.form-control(name='message', id='message', rows='7')
+    .form-group
+      .col-sm-offset-2.col-sm-8
+        button.btn.btn-primary(type='submit')
+          i.fa.fa-envelope
+          | Send
